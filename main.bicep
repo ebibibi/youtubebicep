@@ -11,5 +11,10 @@ resource vmresourcegroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 
 module vm 'vm.bicep' = {
   scope: vmresourcegroup
-  
+  name: 'vm-deploy'
+  params: {
+    vnetName: 'youtubevnet'
+    publicIPaddressName: 'youtubepubip'
+    nicName: 'youtubenic'
+  }
 }
