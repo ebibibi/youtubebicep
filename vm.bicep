@@ -4,6 +4,7 @@ param vnetName string
 
 resource publicIP 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
   name: publicIPaddressName
+  location: resourceGroup().location
 }
 
 resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
