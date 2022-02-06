@@ -8,6 +8,7 @@ resource publicIP 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
 
 resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
   name: vnetName
+  location: resourceGroup().location
   properties: { 
     addressSpace: {
       addressPrefixes: [
@@ -28,6 +29,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2021-05-01' = {
 
 resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
   name: nicName
+  location: resourceGroup().location
   properties: {
     ipConfigurations: [
       {
