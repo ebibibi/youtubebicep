@@ -1,0 +1,32 @@
+{
+	"name": "Bicep Authoring devcontainer",
+	"dockerFile": "Dockerfile",
+	"forwardPorts": [ 7071 ],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-azuretools.vscode-bicep",
+		"ms-vscode.powershell",
+		"msazurermtools.azurerm-vscode-tools",
+		"ms-vscode.azure-account",
+		"ms-azuretools.vscode-azureresourcegroups",
+		"msazurermtools.azurerm-vscode-tools",
+		"ms-vscode.azurecli",
+		"bencoleman.armview",
+		//"/tmp/vscode-bicep.vsix"
+	],
+
+	"mounts": [
+		// This mount ensures that the Azure Powershell credentials aren't lost between
+		// runs of the container.
+		"type=volume,source=bicepazpowershellcreds,target=/root/.Azure",
+		// same thing for the Azure CLI
+		"type=volume,source=bicepazureclicreds,target=/root/.azure",
+	]
+
+}
