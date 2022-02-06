@@ -25,27 +25,9 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure Bicep Build
-      run: |
-        az bicep build --file ./main.bicep
-
-    - name: Az CLI Create Resource Group
-      uses: Azure/CLI@v1
-      with:
-        inlineScript: |
-          #!/bin/bash
-          az group create --name ${{ env.ResourceGroupName }} --location ${{ env.ResourceGroupLocation }}
-
-    - name: Preview Azure Bicep
-      uses: Azure/CLI@v1
-      with:
-        inlineScript: |
-          #!/bin/bash
-          az deployment group what-if -f ./main.json -g ${{ env.ResourceGroupName }} --name ${{ env.ResourceGroupName }}
-
     - name: Deploy Azure Bicep
       uses: Azure/CLI@v1
       with:
         inlineScript: |
           #!/bin/bash
-          az deployment group create --mode Complete -f ./main.json -g ${{ env.ResourceGroupName }} --name ${{ env.ResourceGroupName }}
+          az deployment sub create --location 'JapanEast' --template-file .\main.bicep
