@@ -30,4 +30,4 @@ jobs:
       with:
         inlineScript: |
           #!/bin/bash
-          az deployment sub create --location 'JapanEast' --template-file .\main.bicep
+          az deployment sub create --location 'JapanEast' --template-file main.bicep
