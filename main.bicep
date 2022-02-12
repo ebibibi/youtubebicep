@@ -1,6 +1,7 @@
 targetScope = 'subscription'
 
-var resoucegroupName = 'youtubevm'
+var prefix = 'ebi1'
+var resoucegroupName = '${prefix}vm'
 
 resource vmresourcegroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resoucegroupName
@@ -13,15 +14,15 @@ module vm 'vm.bicep' = {
   scope: vmresourcegroup
   name: 'vm-deploy'
   params: {
-    storageAccountName: 'youtubevmst'
-    vmName: 'youtubevm'
+    storageAccountName: '${prefix}vmst'
+    vmName: '${prefix}vm'
     vmSize: 'Standard_D2s_v3'
     adminUsername: 'mebisuda'
     adminPassword: 'AzureP@ss0wrd'
-    vnetName: 'youtubevnet'
-    publicIPaddressName: 'youtubepubip'
-    nicName: 'youtubenic'
-    networkSecurityGroupName: 'youtubensg'
+    vnetName: '${prefix}vnet'
+    publicIPaddressName: '${prefix}pubip'
+    nicName: '${prefix}nic'
+    networkSecurityGroupName: '${prefix}nsg'
     OSVersion: '2019-datacenter-gensecond'
   }
 }
