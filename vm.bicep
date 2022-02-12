@@ -45,6 +45,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
         name: 'ipconfig1'
         properties: {
           subnet: vnet.properties.subnets[0]
+          publicIPAddress: publicIP
         }
       }
     ] 
